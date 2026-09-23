@@ -1,0 +1,46 @@
+@use "../variables/fonts" as *;
+@use "../variables/spacing" as *;
+@use "../variables/colors" as *;
+@use "../variables/sizes" as *;
+@use "../variables/mixins" as *;
+
+/* ===========================================
+Filter
+============================================= */
+.filter-buttons {
+  @include flex-box($justify: flex-start, $align: stretch, $direction: row);
+  width: $width-full;
+  height: $height-xl;
+  padding: $padding-xxs 0;
+  margin-bottom: $margin-n;
+
+  button {
+    flex: 1;
+    padding: 10px 15px;
+    margin: 0;
+    font-size: 14px;
+    color: $text-main;
+    background-color: $bg-main;
+    border: $border-s $border-main;
+    border-radius: 0;
+    cursor: pointer;
+
+    &:not(:first-child) {
+      border-left: none;
+    }
+
+    &:first-child {
+      border-top-left-radius: $border-radius-l;
+      border-bottom-left-radius: $border-radius-l;
+    }
+
+    &:last-child {
+      border-top-right-radius: $border-radius-l;
+      border-bottom-right-radius: $border-radius-l;
+    }
+
+    &.active-filter {
+      background-color: $color-primary-soft;
+    }
+  }
+}

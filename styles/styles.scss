@@ -1,0 +1,18 @@
+// 1. База
+@use "./reset";
+@use "./globals";
+
+// 2. Секции (Скелет сайта)
+@use "./sections/header";
+@use "./sections/main";
+@use "./sections/footer";
+
+// 3. Компоненты (Контент) — подключаются строго ПОСЛЕ секций
+@use "./components/date";
+@use "./components/search-input";
+@use "./components/filters";
+@use "./components/tasks";
+@use "./components/scrollbar";
+@use "./components/add-task-btn";
+@use "./components/modal";
+@use "./components/modal-date-input";

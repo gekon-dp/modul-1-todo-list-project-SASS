@@ -1,0 +1,26 @@
+@use "./variables/fonts" as *;
+@use "./variables/spacing" as *;
+@use "./variables/colors" as *;
+@use "./variables/sizes" as *;
+@use "./variables/mixins" as *;
+
+body {
+  @include flex-box(center, center, row);
+  min-height: 100dvh;
+  background-color: $bg-page;
+  font-family: "Inter", sans-serif;
+}
+
+.container {
+  @include flex-box(flex-start, stretch, column);
+  position: relative;
+  width: $width-full;
+  max-width: 428px;
+  height: 700px;
+  margin: 0 auto;
+  padding: $padding-n;
+  background-color: #fffbff;
+  border-radius: $border-radius-s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}

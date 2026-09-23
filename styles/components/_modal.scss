@@ -1,0 +1,88 @@
+@use "../variables/fonts" as *;
+@use "../variables/spacing" as *;
+@use "../variables/colors" as *;
+@use "../variables/sizes" as *;
+@use "../variables/mixins" as *;
+
+/* ===========================================
+Modal
+============================================== */
+.task-modal {
+  @include flex-box($justify: flex-end, $align: stretch);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $width-full;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+
+  &.open {
+    pointer-events: auto;
+
+    .modal-overlay {
+      opacity: 1;
+    }
+    .modal-body {
+      transform: translateY(0);
+    }
+  }
+
+  .modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $width-full;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .modal-body {
+    position: relative;
+    width: $width-full;
+    background-color: $bg-main;
+    border-top-left-radius: $border-radius-xl;
+    border-top-right-radius: $border-radius-xl;
+    box-sizing: border-box;
+    z-index: 11;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-out;
+  }
+
+  .modal-content {
+    padding: $padding-l;
+
+    h3 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: $text-main;
+    }
+  }
+
+  .modal-field {
+    @include flex-box($align: stretch);
+    margin-bottom: 15px;
+
+    input[type="text"] {
+      height: $height-xxl;
+      padding: $padding-xxs $padding-n;
+      font-size: $font-size-n;
+      border: $border-s $border-main;
+      border-radius: 0.5rem;
+      outline: none;
+      color: $text-main;
+
+      &::placeholder {
+        color: $text-muted;
+        font-size: $font-size-n;
+      }
+
+      &:focus {
+        border-color: $color-primary;
+        box-shadow: 0 0 0 1px $color-primary;
+      }
+    }
+  }
+}

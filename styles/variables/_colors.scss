@@ -1,0 +1,58 @@
+// Мой первоначальный вариант (написанный по самому проекту, но он не был универсальным, и я  его заменил)
+// $primary-color: #d0bcff;
+// $primary-color-hover: #b89eff;
+
+// $input-bg: #e6e2e9;
+// $input-focus-color: #6750a4;
+
+// $btn-border: #79747e;
+// $btn-color: #1d1b20;
+// $btn-bg-color: #fff;
+// $btn-active-filter-bg-color: #e8def8;
+// $btn-add-task-bg-color: #ebdef7;
+
+// $task-list-bg-color: #f7f2fa;
+// $task-checkbox-border-color: #49454f;
+// $task-content-color: #49464a;
+// $task-complete-color: #a09ca2;
+// $task-overdue-color: #ff3b30;
+// $task-checkbox-check-color: #381e72;
+
+// 1. Базовая палитра
+$color-purple-light: #d0bcff;
+$color-purple-hover: #b89eff;
+$color-purple-main: #6750a4;
+$color-purple-dark: #381e72;
+$color-purple-bg: #ebdef7;
+$color-purple-soft: #e8def8;
+
+$color-gray-bg: #f7f2fa;
+$color-gray-input: #e6e2e9;
+$color-gray-border: #79747e;
+$color-gray-dark: #49454f;
+$color-gray-text: #49464a;
+$color-gray-muted: #a09ca2;
+
+$color-black: #1d1b20;
+$color-white: #ffffff;
+$color-red: #ff3b30;
+
+// 2. Семантические роли (Универсальные названия для кода компонентов)
+$bg-main: $color-white; // #ffffff
+$bg-surface: $color-gray-bg; // #f7f2fa
+$bg-control: $color-gray-input; // #e6e2e9
+$bg-page: #333333; // Цвет фона за пределами приложения
+
+$color-primary: $color-purple-main; // #6750a4
+$color-primary-hover: $color-purple-hover; // #b89eff
+$color-primary-light: $color-purple-bg; // #ebdef7
+$color-primary-soft: $color-purple-soft; // #e8def8
+
+$text-main: $color-black; // #1d1b20
+$text-muted: $color-gray-dark; // #49454f
+$text-muted-alt: $color-gray-text; // #49464a
+$text-disabled: $color-gray-muted; // #a09ca2
+$text-danger: $color-red; // #ff3b30
+$text-accent-dark: $color-purple-dark; // #381e72
+
+$border-main: $color-gray-border; // #79747e

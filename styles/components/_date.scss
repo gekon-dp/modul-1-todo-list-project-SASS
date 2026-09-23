@@ -1,0 +1,13 @@
+@use "../variables/fonts" as *;
+@use "../variables/spacing" as *;
+
+/* Current date */
+h2 {
+  font-size: 20px;
+  margin-top: $margin-xs;
+}
+
+p {
+  font-size: 15px;
+  margin-bottom: $margin-n;
+}

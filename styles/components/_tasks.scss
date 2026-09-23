@@ -1,0 +1,111 @@
+@use "../variables/fonts" as *;
+@use "../variables/spacing" as *;
+@use "../variables/colors" as *;
+@use "../variables/sizes" as *;
+@use "../variables/mixins" as *;
+
+/* ===========================================
+Tasks
+============================================= */
+.tasks-heading {
+  font-size: $font-size-n;
+  margin-bottom: $margin-n;
+  margin-top: 0;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  max-height: 350px;
+  overflow-y: auto;
+  padding-right: 0px;
+  padding-bottom: 70px;
+
+  li {
+    @include flex-box(flex-start, center, row);
+    width: $width-full;
+    padding: $padding-xs $padding-n;
+    margin-bottom: $margin-s;
+    background-color: $color-gray-bg;
+    border-radius: $border-radius-n;
+    box-sizing: border-box;
+
+    &.completed {
+      .task-text {
+        text-decoration: line-through;
+        color: $text-disabled;
+      }
+      .task-date {
+        color: $text-disabled;
+      }
+    }
+
+    &.overdue {
+      .task-date {
+        color: $text-danger;
+      }
+    }
+  }
+
+  .task-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    display: grid;
+    place-content: center;
+    width: 18px;
+    height: 18px;
+    margin: 0 $margin-n 0 0;
+    background-color: transparent;
+    border: $border-n $text-muted;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &:checked {
+      background-color: $color-purple-light;
+      border-color: $color-purple-light;
+
+      &::before {
+        scale: 1;
+      }
+    }
+
+    &::before {
+      content: "";
+      width: 10px;
+      height: 4px;
+      border-left: $border-n $text-accent-dark;
+      border-bottom: $border-n $text-accent-dark;
+      transform: rotate(-45deg) translate(1px, -1px);
+      transform-origin: center center;
+      scale: 0;
+      transition: scale 0.1s ease-in-out;
+    }
+  }
+
+  .task-content {
+    @include flex-box($justify: center, $align: stretch);
+    flex: 1;
+    min-width: 0;
+    min-height: 62px;
+    gap: $margin-xs;
+
+    .task-date {
+      font-size: 14px;
+      color: $text-muted-alt;
+      margin-bottom: 2px;
+    }
+
+    .task-text {
+      margin: 0;
+      padding: 0;
+      word-break: break-word;
+      font-size: $font-size-n;
+      color: $text-muted-alt;
+    }
+  }
+}

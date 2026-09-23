@@ -1,0 +1,570 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  background-color: #333333;
+  font-family: "Inter", sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  position: relative;
+  width: 100%;
+  max-width: 428px;
+  height: 700px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: #fffbff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* Current date */
+h2 {
+  font-size: 20px;
+  margin-top: 0.5rem;
+}
+
+p {
+  font-size: 15px;
+  margin-bottom: 1rem;
+}
+
+/* Search input */
+.input-box {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.input-box input {
+  padding: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 2rem;
+  height: 3rem;
+  width: 100%;
+  background-color: #e6e2e9;
+  border-radius: 1.75rem;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+}
+.input-box .icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.input-box .icon svg {
+  fill: #49454f;
+}
+
+/* ===========================================
+Filter
+============================================= */
+.filter-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: 3rem;
+  padding: 0.25rem 0;
+  margin-bottom: 1rem;
+}
+.filter-buttons button {
+  flex: 1;
+  padding: 10px 15px;
+  margin: 0;
+  font-size: 14px;
+  color: #1d1b20;
+  background-color: #ffffff;
+  border: 1px solid #79747e;
+  border-radius: 0;
+  cursor: pointer;
+}
+.filter-buttons button:not(:first-child) {
+  border-left: none;
+}
+.filter-buttons button:first-child {
+  border-top-left-radius: 1.75rem;
+  border-bottom-left-radius: 1.75rem;
+}
+.filter-buttons button:last-child {
+  border-top-right-radius: 1.75rem;
+  border-bottom-right-radius: 1.75rem;
+}
+.filter-buttons button.active-filter {
+  background-color: #e8def8;
+}
+
+/* ===========================================
+Tasks
+============================================= */
+.tasks-heading {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  max-height: 350px;
+  overflow-y: auto;
+  padding-right: 0px;
+  padding-bottom: 70px;
+}
+.task-list li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.75rem;
+  background-color: #f7f2fa;
+  border-radius: 1rem;
+  box-sizing: border-box;
+}
+.task-list li.completed .task-text {
+  text-decoration: line-through;
+  color: #a09ca2;
+}
+.task-list li.completed .task-date {
+  color: #a09ca2;
+}
+.task-list li.overdue .task-date {
+  color: #ff3b30;
+}
+.task-list .task-checkbox {
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  display: grid;
+  place-content: center;
+  width: 18px;
+  height: 18px;
+  margin: 0 1rem 0 0;
+  background-color: transparent;
+  border: 2px solid #49454f;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.task-list .task-checkbox:hover {
+  border-color: #6750a4;
+}
+.task-list .task-checkbox:checked {
+  background-color: #d0bcff;
+  border-color: #d0bcff;
+}
+.task-list .task-checkbox:checked::before {
+  scale: 1;
+}
+.task-list .task-checkbox::before {
+  content: "";
+  width: 10px;
+  height: 4px;
+  border-left: 2px solid #381e72;
+  border-bottom: 2px solid #381e72;
+  transform: rotate(-45deg) translate(1px, -1px);
+  transform-origin: center center;
+  scale: 0;
+  transition: scale 0.1s ease-in-out;
+}
+.task-list .task-content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+  min-height: 62px;
+  gap: 0.5rem;
+}
+.task-list .task-content .task-date {
+  font-size: 14px;
+  color: #49464a;
+  margin-bottom: 2px;
+}
+.task-list .task-content .task-text {
+  margin: 0;
+  padding: 0;
+  word-break: break-word;
+  font-size: 1rem;
+  color: #49464a;
+}
+
+/* ===========================================
+Scrollbar
+============================================== */
+.task-list::-webkit-scrollbar {
+  display: block !important;
+  width: 4px;
+}
+.task-list {
+  /* Дорожка */
+}
+.task-list::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
+}
+.task-list {
+  /* Ползунок */
+}
+.task-list::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+.task-list::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+/* ===========================================
+Add task button
+============================================== */
+.add-task-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: #ebdef7;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+.add-task-btn:hover {
+  background-color: #b89eff;
+}
+.add-task-btn:hover .pencil-icon {
+  transform: scale(1.1);
+}
+.add-task-btn .pencil-icon {
+  width: 22px;
+  height: 22px;
+  fill: #1d1b20;
+  transition: transform 0.2s;
+}
+
+/* ===========================================
+Modal
+============================================== */
+.task-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-end;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+.task-modal.open {
+  pointer-events: auto;
+}
+.task-modal.open .modal-overlay {
+  opacity: 1;
+}
+.task-modal.open .modal-body {
+  transform: translateY(0);
+}
+.task-modal .modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.task-modal .modal-body {
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  box-sizing: border-box;
+  z-index: 11;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+}
+.task-modal .modal-content {
+  padding: 1.25rem;
+}
+.task-modal .modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #1d1b20;
+}
+.task-modal .modal-field {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+.task-modal .modal-field input[type=text] {
+  height: 3.5rem;
+  padding: 0.25rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #79747e;
+  border-radius: 0.5rem;
+  outline: none;
+  color: #1d1b20;
+}
+.task-modal .modal-field input[type=text]::-moz-placeholder {
+  color: #49454f;
+  font-size: 1rem;
+}
+.task-modal .modal-field input[type=text]::placeholder {
+  color: #49454f;
+  font-size: 1rem;
+}
+.task-modal .modal-field input[type=text]:focus {
+  border-color: #6750a4;
+  box-shadow: 0 0 0 1px #6750a4;
+}
+
+/* =====================================================
+Date input
+======================================================== */
+.custom-date-input {
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 3.5rem;
+  padding: 0.25rem 1rem;
+  background-color: #ffffff;
+  border: 1px solid #79747e;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.custom-date-input:focus {
+  border-color: #6750a4;
+  box-shadow: 0 0 0 1px #6750a4;
+}
+.custom-date-input::-moz-placeholder {
+  color: #49454f;
+  font-size: 1rem;
+}
+.custom-date-input::placeholder {
+  color: #49454f;
+  font-size: 1rem;
+}
+.custom-date-input {
+  /* Плейсхолдер "Дата" (кастомный псевдоэлемент) */
+}
+.custom-date-input:not(.has-value)::before {
+  content: "Дата";
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #49454f;
+  font-size: 1rem;
+  line-height: 1;
+  font-family: inherit;
+  pointer-events: none;
+}
+.custom-date-input {
+  /* Растягиваем скрытую иконку календаря на всю площадь */
+}
+.custom-date-input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  background: transparent !important;
+  opacity: 0 !important;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+}
+.custom-date-input {
+  /* Прячем буквы дд.мм.гггг */
+}
+.custom-date-input::-webkit-datetime-edit {
+  opacity: 0 !important;
+}
+.custom-date-input {
+  /* Показываем выбранную дату */
+}
+.custom-date-input.has-value::-webkit-datetime-edit {
+  opacity: 1 !important;
+  color: #49454f !important;
+  font-size: 1rem;
+}
+
+/* =====================================================
+Checkbox Field
+======================================================== */
+.checkbox-field {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-bottom: 3rem !important;
+}
+.checkbox-field label {
+  margin-bottom: 0;
+  cursor: pointer;
+  display: inline-block !important;
+}
+
+.toggle-label {
+  font-size: 1rem;
+  color: #1d1b20;
+  white-space: nowrap !important;
+}
+
+/* =====================================================
+Switch (Тумблер)
+======================================================== */
+.switch {
+  position: relative;
+  display: inline-block !important;
+  width: 3.25rem;
+  height: 2rem;
+  flex-shrink: 0 !important;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e9e9ea;
+  border-radius: 34px;
+  transition: 0.3s;
+  /* Белый шарик */
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 27px;
+  width: 27px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  transition: 0.3s;
+}
+.slider {
+  /* Галочка внутри */
+}
+.slider:after {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 4px;
+  border-left: 2px solid #6750a4;
+  border-bottom: 2px solid #6750a4;
+  left: 10px;
+  top: 12px;
+  transform: rotate(-45deg);
+  scale: 0;
+  z-index: 2;
+  transition: 0.2s ease-in-out;
+}
+
+/* Состояния переключателя */
+.switch input:checked + .slider {
+  background-color: #6750a4;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.switch input:checked + .slider:after {
+  scale: 1;
+  transform: translateX(20px) rotate(-45deg);
+}
+
+/* =====================================================
+Modal Actions
+======================================================== */
+.decor-line {
+  width: 2rem;
+  height: 0.25rem;
+  background-color: #79747e;
+  border-radius: 2px;
+  margin: 0 auto 30px;
+}
+
+.modal-actions {
+  display: flex !important;
+  justify-content: flex-end !important;
+  gap: 0.5rem;
+}
+.modal-actions button {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 100px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  background-color: #ffffff;
+  color: #6750a4;
+  border: 1px solid #6750a4 !important;
+}
+
+.btn-submit {
+  background-color: #6750a4;
+  color: #ffffff;
+}/*# sourceMappingURL=styles.css.map */

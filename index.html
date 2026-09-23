@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <script src="https://kit.fontawesome.com/bc194a3937.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2 id="current-day"></h2>
+      <p id="current-date"></p>
+      <div class="input-box">
+        <i class="fa-solid fa-magnifying-glass icon"></i>
+        <input type="text" placeholder="Поиск..." />
+      </div>
+      <div class="filter-buttons">
+        <button class="filter-all-btn active-filter">
+          <i class="fa-solid fa-check"></i>
+          Все
+        </button>
+        <button class="filter-active-btn">Активные</button>
+        <button class="filter-finished-btn">Завершенные</button>
+      </div>
+      <h2 class="tasks-heading">Список дел</h2>
+      <ul class="task-list"></ul>
+      <button class="add-task-btn" title="Создать задачу">
+        <i class="fa-solid fa-pencil"></i>
+      </button>
+
+      <!-- Modal add new task-->
+      <div class="task-modal" id="taskModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-body">
+          <div class="modal-content">
+            <div class="decor-line"></div>
+            <div class="modal-field">
+              <input type="text" id="modalDesc" placeholder="Описание" />
+            </div>
+
+            <div class="modal-field">
+              <div class="modal-field">
+                <!-- Переводим инпут в тип text, чтобы placeholder "Дата" работал нативно -->
+                <input type="text" id="modalDate" class="custom-date-input" placeholder="Дата" readonly />
+              </div>
+            </div>
+
+            <div class="modal-field checkbox-field">
+              <span class="toggle-label">Напомнить мне</span>
+              <label class="switch">
+                <input type="checkbox" id="modalReminder" />
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="modal-actions">
+              <button class="btn-submit" id="btnSubmit">Добавить</button>
+              <button class="btn-cancel" id="btnCancel">Отмена</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="scripts/scripts.js"></script>
+</html>

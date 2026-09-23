@@ -1,0 +1,40 @@
+@use "../variables/fonts" as *;
+@use "../variables/spacing" as *;
+@use "../variables/colors" as *;
+@use "../variables/sizes" as *;
+@use "../variables/mixins" as *;
+
+/* ===========================================
+Add task button
+============================================== */
+.add-task-btn {
+  @include flex-box(center, center, row);
+  position: absolute;
+  bottom: $margin-n;
+  right: $margin-n;
+  width: $width-xxl;
+  height: $height-xxl;
+  background-color: $color-primary-light;
+  border: none;
+  border-radius: $border-radius-n;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    transform 0.1s;
+
+  &:hover {
+    background-color: $color-primary-hover;
+
+    .pencil-icon {
+      transform: scale(1.1);
+    }
+  }
+
+  .pencil-icon {
+    width: 22px;
+    height: 22px;
+    fill: $text-main;
+    transition: transform 0.2s;
+  }
+}
